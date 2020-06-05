@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/cumplo/static/css/main.1faf3bda.chunk.css",
+    "main.js": "/cumplo/static/js/main.9a4e0d6e.chunk.js",
+    "main.js.map": "/cumplo/static/js/main.9a4e0d6e.chunk.js.map",
+    "runtime-main.js": "/cumplo/static/js/runtime-main.c3dfcb8e.js",
+    "runtime-main.js.map": "/cumplo/static/js/runtime-main.c3dfcb8e.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/cumplo/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.ef4e01a6.chunk.js": "/cumplo/static/js/2.ef4e01a6.chunk.js",
+    "static/js/2.ef4e01a6.chunk.js.map": "/cumplo/static/js/2.ef4e01a6.chunk.js.map",
+    "index.html": "/cumplo/index.html",
+    "precache-manifest.b22a5ac82e95e3f0fd036945f6213af3.js": "/cumplo/precache-manifest.b22a5ac82e95e3f0fd036945f6213af3.js",
+    "service-worker.js": "/cumplo/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/cumplo/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.1faf3bda.chunk.css.map": "/cumplo/static/css/main.1faf3bda.chunk.css.map",
+    "static/js/2.ef4e01a6.chunk.js.LICENSE.txt": "/cumplo/static/js/2.ef4e01a6.chunk.js.LICENSE.txt",
+    "static/media/Logo_cumplo.svg": "/cumplo/static/media/Logo_cumplo.1260a8b2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c3dfcb8e.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.ef4e01a6.chunk.js",
+    "static/css/main.1faf3bda.chunk.css",
+    "static/js/main.9a4e0d6e.chunk.js"
+  ]
+}
