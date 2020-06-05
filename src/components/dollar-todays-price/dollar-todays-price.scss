@@ -1,15 +1,15 @@
 @import '../../sass/variables.scss';
 
 .dollar-price {
-    
+
     .list {
         list-style: none;
-        padding-top: 30px;
+        padding-top: 10px;
 
         .titles {
             color: $green;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 15px;
         }
     }
 }

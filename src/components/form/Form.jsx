@@ -4,41 +4,38 @@ import './form.scss'
 import axios from 'axios'
 
 import Spinner from '../spinner/Spinner'
+import Chart from '../chart/Chart'
 
 const Form = () => {
-
-    const [data, setData] = useState({})
-    const [loading, setLoading] = useState(false)
-    const [dates, setDates] = useState({
+    const [form, setForm] = useState({
+        data: {},
+        loading: false
+    })
+    const [date, setDates] = useState({
         month:'',
         year: ''
     })
-    const [monthError, setMonthError] = useState(false)
 
     const handleChange = e => {
         const { name, value } = e.target;
 
-        setDates({ ...dates, [name]: value});
+        setDates({ ...date, [name]: value});
     }
 
     const fetchingData = () => {
-        setLoading(true)
-        const {month, year} = dates
+        setForm({ ...form, loading: true })
+        const {month, year} = date
         const apiKey = "9c84db4d447c80c74961a72245371245cb7ac15f"
         if(month.length < 2 ) {
             let my_string =" "
-            my_string = '0' + my_string;
-        }
-        if(month.length > 4){
-            setMonthError(true)
+            my_string = '0' + my_string
         }
         const url = `https://api.sbif.cl/api-sbifv3/recursos_api/dolar/${year}/${month}?apikey=${apiKey}&formato=json`
 
         axios
             .get(url)
             .then(res => {
-                setData(res.data)
-                setLoading(false)
+                setForm({ ...form, data: res.data, loading: false })
             })
             .catch(err => {
                 console.log(err)
@@ -47,53 +44,49 @@ const Form = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-
         fetchingData()
     }
-
+    
+    const { loading, data } = form
     const { Dolares } = data
 
-    let valorDolar = []
+    const dates = Dolares && Dolares.map(function(dolar) {
+        return dolar['Fecha'];
+    })
+
+    const values = Dolares && Dolares.map(function(dolar) {
+        return dolar['Valor'];
+    })
 
     return (
-        <div className="chart">
+        <div className="form">
             <div className="row">
-                <div className="col-12">
-                    {
-                        Dolares && Dolares.map(item => (
-                            parseInt(valorDolar.push(item.Valor))                            
-                        ))
-                    }
-                    { console.log(valorDolar.length, "valorDolar")}
-                </div>
-                <div className="col-6">
+                <div className="col-12 col-md-5">
                     <form onSubmit={onSubmit}>
-                        <label className="title-form">Please enter month and year of the data that you want to get</label>
+                        <h3 className="title-form">Here you can find dollar's price in the range of 2010 and 2020 by entering the month and year you want to consult</h3>
                         <div className="form-group">
+                            <label>Please enter Month </label><br/>
                             <input 
                                 type="number" 
-                                placeholder="Month"
+                                placeholder="2 digits"
                                 onChange={handleChange}
                                 name="month"                                
                             />
                         </div>  
                         <div className="form-group">
+                            <label>Please enter Year </label><br/>
                             <input 
                                 type="number" 
-                                placeholder="Year"
+                                placeholder="4 digits"
                                 onChange={handleChange}
                                 name="year"
                             />
-                            { monthError ? <h4 className="text-danger">Error</h4> : null }
                         </div>              
                         <button type="submit" className="btn btn-success mb-5">Submit</button>
                     </form>
                 </div>
-                <div className="col-6 text-center">
-                    { loading ? <Spinner /> : Dolares && Dolares.map(dolar =>
-                        (<><h6 key={dolar.id}><span className="titles">Price: </span> {dolar.Valor} on <span className="titles"> date: </span> {dolar.Fecha}</h6><br/></>)
-                        ) 
-                    }
+                <div className="col-12 col-md-7 text-center">                    
+                    { loading ? <Spinner /> : <Chart dates={dates} values={values} /> }
                 </div>
             </div>
         </div>

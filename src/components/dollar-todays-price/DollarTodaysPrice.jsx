@@ -9,7 +9,7 @@ const DollarTodaysPrice = ({ loading, data }) => {
             { loading ? <Spinner /> : 
                 <ul className="list">
                     <li><span className="titles">Date: </span>  {data.Dolares[0].Fecha}</li>
-                    <li><span className="titles">Price: </span>  {data.Dolares[0].Valor}</li>
+                    <li><span className="titles">Price: </span>  {data.Dolares[0].Valor} cl pesos</li>
                 </ul>    
             }                
         </div>
